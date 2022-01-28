@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Routes, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 // import component
 import Create from './components/create.component';
@@ -10,7 +10,7 @@ import Index from './components/index.component';
 class App extends Component {
   render () {
     return(
-      <div>
+      <Router>
         <div className='container'>
           <nav className='navbar navbar-expand-lg navbar-light bg-light mx-auto'>
             <Link to={'/'} className='navbar-brand'> MERN CRUD</Link>
@@ -33,12 +33,12 @@ class App extends Component {
           </nav> <br/>
           <h2>MERN CRUD</h2> <br/>
           <Routes>
-            <Route exact path = '/create' component = {Create} />
-            <Route exact path = '/edit/:id' component = {Edit} />
-            <Route exact path = '/index' component = {Index} />
+            <Route path = '/create' element = {<Create />} />
+            <Route path = '/edit/:id' element = {<Edit />} />
+            <Route path = '/index' element = {<Index />} />
           </Routes>
         </div>
-      </div>
+      </Router>
     );
   };
 };
