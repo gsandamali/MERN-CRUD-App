@@ -74,7 +74,7 @@ export default class Create extends Component{
     return(
       <div style={{marginTop: 10}}>
         <h3>User Details</h3>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <div className='form-group'>
             <label>User ID: </label>
             <input type="text" className='form-control' />
