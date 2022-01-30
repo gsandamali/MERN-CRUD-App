@@ -77,32 +77,62 @@ export default class Create extends Component{
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>
             <label>User ID: </label>
-            <input type="text" className='form-control' />
+            <input 
+              type="text" 
+              className='form-control' 
+              value={this.state.user_id}
+              onChange={this.onChangeUserID}
+            />
           </div>
 
           <div className='form-group'>
             <label>First Name: </label>
-            <input type="text" className='form-control' />
+            <input 
+              type="text" 
+              className='form-control' 
+              value={this.state.first_name}
+              onChange={this.onChangeFirstName}
+            />
           </div>
 
           <div className='form-group'>
             <label>Last Name: </label>
-            <input type="text" className='form-control' />
+            <input 
+              type="text"   
+              className='form-control' 
+              value={this.state.last_name}
+              onChange={this.onChangeLastName}
+            />
           </div>
 
           <div className='form-group'>
             <label>Contact Number: </label>
-            <input type="text" className='form-control' />
+            <input 
+              type="text" 
+              className='form-control' 
+              value={this.state.contact_number}
+              onChange={this.onChangeContactNumber}
+            />
           </div>
 
           <div className='form-group'>
             <label>Email: </label>
-            <input type="text" className='form-control' />
+            <input 
+              type="text" 
+              className='form-control' 
+              value={this.state.email}
+              onChange={this.onChangeEmail}
+            />
           </div>
 
           <div className='form-group'>
             <label>Position: </label>
-            <input type="text" className='form-control' />
+            <input 
+              type="text" 
+              className='form-control' 
+              value={this.state.position}
+              onChange={this.onChangePosition}
+            />
           </div>
 
           {/*Create submit button*/}
