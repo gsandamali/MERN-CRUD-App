@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import axios from 'axios';
+
 export default class Create extends Component{
 
   //Create constructor to pass values
@@ -60,14 +62,24 @@ export default class Create extends Component{
   onSubmit(e){
     e.preventDefault();
     console.log(`The values are ${this.state.user_id}`);
-    this.setState({
+    const obj = {
+      user_id:this.state.user_id,
+      first_name:this.state.first_name,
+      last_name:this.state.last_name,
+      contact_number:this.state.contact_number,
+      email:this.state.email,
+      position:this.state.position
+    };
+    axios.post('http://localhost:4000/user//addUser', obj).then((res) => {console.log(res.data)});
+
+    this.state({
       user_id:"",
       first_name:"",
       last_name:"",
       contact_number:"",
       email:"",
       position:""
-    })
+    })    
   }
 
   render() {
