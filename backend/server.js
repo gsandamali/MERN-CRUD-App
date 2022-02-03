@@ -16,6 +16,7 @@ mongoose.connect(config.DB, {
 .catch((err) => console.log('cannot connect to the databased' + err));
 
 app.use(cors());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use('/users', userRoute);

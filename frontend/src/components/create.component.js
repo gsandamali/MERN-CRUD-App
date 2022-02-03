@@ -70,9 +70,9 @@ export default class Create extends Component{
       email:this.state.email,
       position:this.state.position
     };
-    axios.post('http://localhost:4000/user//addUser', obj).then((res) => {console.log(res.data)});
+    axios.post('http://localhost:4000/users/addUser', obj).then((res) => {console.log(res.data)});
 
-    this.state({
+    this.setState({
       user_id:"",
       first_name:"",
       last_name:"",

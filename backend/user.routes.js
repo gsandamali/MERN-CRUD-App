@@ -1,33 +1,27 @@
-const express = require('express');
+const express = require("express");
 const userRoutes = express.Router();
 
 let User = require('./user.model');
 
 //add new user
-userRoutes.route('./addUser').post(function (res,req)  {
-    let user = new User(req.body);
-    user.save()
-        .then(user => {
-            res.status(200).json({'user': 'User is added in susccessfully'});
-        })
-        .catch(err => {
-            res.status(400).send("Unable to add new user");
-        });
+userRoutes.post('/addUser', (req,res) => {
+    var newUser = new User(req.body);
+    newUser.save()
+    .then(item => {
+        res.send("item saved to database");
+    })
+    /*.catch(err => {
+        res.status(400).send("unable to save to database");
+    });*/
 });
 
 //get users informations
-userRoutes.route('/').get(function (res,req) {
-    User.find(function (err, user) {
-        if(err){
-            console.log(err);
-        }else{
-            res.json(user)
-        };
-    });
+userRoutes.get('/',  (req, res) => {
+    res.json(User);
 });
 
 //Edit
-userRoutes.route('/editUser/:id').get(function (res,req) {
+userRoutes.get('/editUser/:id', (req, res) => {
     let id =req.params.id;
     User.findById(id, function (err,user) {
         res.json(user);
@@ -35,7 +29,7 @@ userRoutes.route('/editUser/:id').get(function (res,req) {
 });
 
 //Update
-userRoutes.route('/updateUser/:id').post (function (res,req) {
+userRoutes.post('/updateUser/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id, function (err, user) {
         if(!user){
             res.status(404).send("Data is not found");
@@ -56,7 +50,7 @@ userRoutes.route('/updateUser/:id').post (function (res,req) {
 });
 
 //delete
-userRoutes.route('/deleteUser/:id').get(function (err, user) {
+userRoutes.get('/deleteUser/:id', (err, user) => {
     User.findByIdAndRemove({_id:req.params.id}, function (err, user) {
         if(err){
             res.json(err);
